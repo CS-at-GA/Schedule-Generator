@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://germantownacademy.net/schedule.schema.json",
+    "$id": "https://raw.githubusercontent.com/CS-at-GA/Schedule-Generator/main/GASchedule.schema.json",
     "title": "Schedule",
     "description": "The GA Schedule",
     "type": "object",
