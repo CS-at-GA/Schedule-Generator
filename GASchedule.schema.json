@@ -1,0 +1,97 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://germantownacademy.net/schedule.schema.json",
+    "title": "Schedule",
+    "description": "The GA Schedule",
+    "type": "object",
+    "properties": {
+        "required":["startDate","rotationStartDate","rotationStartDay","rotationEndDate","endDate","defaultDailyFormat","defaultDailySchedule",
+        "days"],
+        "startDate": {
+            "description": "The date the schedule begins",
+            "type": "date"
+        },
+        "rotationStartDate": {
+            "description": "The date the rotation begins",
+            "type": "date"
+        },
+        "rotationStartDay": {
+            "description": "The day of the rotation the schedule begins with",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 7
+        },
+        "rotationEndDate": {
+            "description": "The date the rotation ends",
+            "type":"date"
+        },
+        "endDate": {
+            "description": "The date the schedule ends",
+            "type": "date"
+        },
+        "defaultDailyFormat": {
+            "description": "The regular daily schedule times",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required":["startTime","endTime"],
+                "properties": {
+                    "startTime": {
+                        "type":"time"
+                    },
+                    "endTime": {
+                        "type": "time"
+                    }
+                }
+            }
+        },
+        "defaultDailySchedule": {
+            "description": "The regular daily schedule periods",
+            "type": "array",
+            "items": {
+                "enum": ["A","B","C","D","E","F","G","H","Community Time","Break","Lunch","Flex","Morning Meeting","House Meeting","Faculty Meeting/House Meeting","Class Meeting","Advisory"]
+            },
+            "minItems":10,
+            "maxItems":10,
+            "uniqueItems": true
+        },
+        "days": {
+            "description": "The days of the schedule",
+            "type": "array",
+            "items": {
+                "type":"object",
+                "required":["date"],
+                "properties": {
+                    "date":{
+                        "type":"date"
+                    },
+                    "dayOfRotation":{
+                        "type":"integer",
+                        "minimum": 1,
+                        "maximum": 7                        
+                    },
+                    "schedule":{
+                        "type":"array",
+                        "items": {
+                            "type":"object",
+                            "properties": {
+                                "startTime": {
+                                    "type":"time"
+                                },
+                                "endTime": {
+                                    "type":"time"
+                                },
+                                "description": {
+                                    "type":"string"
+                                }
+                            }
+                        }
+                    },
+                    "annotation":{
+                        "type":"string"
+                    }
+                }
+            }
+        }
+    }
+}
